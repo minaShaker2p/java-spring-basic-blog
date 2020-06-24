@@ -11,7 +11,7 @@ import java.util.List;
 @Component
 public class PostRepository {
 
-    private final List ALL_POSTS = new ArrayList<>(Arrays.asList(
+    private final List<Post> ALL_POSTS = new ArrayList<>(Arrays.asList(
             new Post(1l, "Earbuds",
                     "You have got to try these in your ears. So tiny and can even block the sounds of screaming toddlers if you so desire.",
                     "You have got to try these in your ears. So tiny and can even block the sounds of screaming toddlers if you so desire.",
@@ -51,6 +51,10 @@ public class PostRepository {
     }
 
     public Post findById(Long id) {
+        for (Post all_post : ALL_POSTS) {
+            if (all_post.getId().equals(id))
+                return all_post;
+        }
         return null;
     }
 }
